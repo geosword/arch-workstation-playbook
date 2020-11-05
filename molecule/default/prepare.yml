@@ -1,0 +1,24 @@
+---
+# A place to prep your container / vm for something your role will rely on but not actually do. You might consider baking it into your container / vm image if its not sensitive
+- hosts: all
+  gather_facts: false
+  become: true
+  tasks:
+    - name: "check for python"
+      raw: test -e /usr/bin/python
+      changed_when: false
+      ignore_errors: true
+      register: pythoninstalled
+
+    - name: Synchronise the package databases  # noqa 301
+      raw: /usr/bin/pacman -Syy
+
+    - name: install python if its not there.
+      raw: /usr/bin/pacman -S --noconfirm python
+      when:
+        - pythoninstalled.rc != 0
+
+    - name: install some things which arent in the container but are in the tar image
+      raw: /usr/bin/pacman -S --noconfirm vim base-devel
+      when:
+        - pythoninstalled.rc != 0

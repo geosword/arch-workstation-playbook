@@ -1,0 +1,22 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: vagrant
+  provider:
+    name: virtualbox
+platforms:
+  - name: archworkstation
+    config_options:
+      ssh.keep_alive: true
+      ssh.remote_user: "'vagrant'"
+    box: archlinux/archlinux
+    priveleged: true
+    memory: 2048
+    cpus: 1
+#    provision: no
+provisioner:
+  name: ansible
+  no_log: true
+verifier:
+  name: ansible

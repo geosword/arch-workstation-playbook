@@ -1,0 +1,5 @@
+---
+- src: git@github.com:geosword/ansible-role-ws-base.git
+  scm: git
+  version: master
+  name: geosword.ws-base

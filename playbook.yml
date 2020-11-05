@@ -1,0 +1,6 @@
+---
+- name: apply the roles to make your workstation
+  hosts: dylans-arch
+  gather_facts: true
+  roles:
+    - geosword.ws-base
