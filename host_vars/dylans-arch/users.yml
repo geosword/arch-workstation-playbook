@@ -1,0 +1,17 @@
+---
+user_home: /home/dylanh
+user_name: dylanh
+user_group: dylanh
+user_list:
+  - name: "{{ user_name }}"
+    uid: 1001
+    shell: /usr/bin/zsh
+    createhome: true
+    home: "{{ user_home }}"
+    groups:
+      - wheel
+authorized_key_list:
+  - name: dylanh
+    authorized_keys:
+      - key: "{{ lookup('file','files/ssh/hoff.pub') }}"
+      - key: "{{ lookup('file','files/ssh/geosword.pub') }}"

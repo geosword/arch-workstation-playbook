@@ -5,9 +5,11 @@
   hosts: all
   gather_facts: false
   tasks:
+    - name: include the playbook vars
+      include_vars:
+        dir: ../../host_vars/dylans-arch/
+        extensions:
+          - yml
 
-    - name: "Include the role you are developing here"
-      include_role:
-        apply:
-          become: true
-        name: "ansible-role-ws-base"
+    - name: import the main play
+      include_tasks: ../../playbook_tasks.yml

@@ -1,0 +1,33 @@
+---
+wsbase_user_name: dylanh
+wsbase_user_dir: "/home/{{ user_name }}"
+wsbase_pacman_mirror_list_url: "https://www.archlinux.org/mirrorlist/?country=GB&country=US&protocol=http&protocol=https&ip_version=4&use_mirror_status=on"
+wsbase_pacman_gpg_conf_template: pacman_gpg_conf.j2
+wsbase_pacman_key_server: pool.sks-keyservers.net
+wsbase_package_list:
+  - base-devel
+  - bind-tools
+  - cronie
+  - fakeroot
+  - git
+  - grub
+  - hwinfo
+  - ipcalc
+  - icu
+  - jq
+  - keychain
+  - neovim
+  - net-tools
+  - pwgen
+  - rdiff-backup
+  - rsync
+  - subversion
+  - sudo
+  - tcpdump
+  - traceroute
+  - unzip
+  - wget
+  - whois
+  - zsh
+wsbase_post_install_notfiers:
+  - "enable cronie"

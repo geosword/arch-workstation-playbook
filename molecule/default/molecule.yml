@@ -6,7 +6,7 @@ driver:
   provider:
     name: virtualbox
 platforms:
-  - name: archworkstation
+  - name: dylansarch
     config_options:
       ssh.keep_alive: true
       ssh.remote_user: "'vagrant'"

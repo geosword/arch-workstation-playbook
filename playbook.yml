@@ -1,6 +1,8 @@
 ---
 - name: apply the roles to make your workstation
-  hosts: dylans-arch
+  hosts: all
+  become: true
   gather_facts: true
-  roles:
-    - geosword.ws-base
+  tasks:
+    - name: include the playbook_tasks.yml
+      include_tasks: playbook_tasks.yml

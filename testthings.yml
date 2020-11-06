@@ -1,0 +1,13 @@
+---
+- name: testthings
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: do a lookup
+      set_fact:
+        keyservers: "{{ lookup('community.general.dig', '_pgpkey-http._tcp.eu.pool.sks-keyservers.net', 'qtype=SRV', wantlist=True) }}"
+        buddyips: "{{ lookup('dig','workers.buddy.works', wantlist=true) }}"
+
+    - name: debug
+      debug:
+        var: keyservers

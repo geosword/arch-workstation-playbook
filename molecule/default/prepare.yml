@@ -4,6 +4,12 @@
   gather_facts: false
   become: true
   tasks:
+    - name: include playbook variables
+      include_vars:
+        dir: ../../host_vars/dylans-arch/
+        extensions:
+          - yml
+
     - name: "check for python"
       raw: test -e /usr/bin/python
       changed_when: false
