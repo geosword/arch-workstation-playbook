@@ -11,5 +11,4 @@
         extensions:
           - yml
 
-    - name: import the main play
-      include_tasks: ../../playbook_tasks.yml
+- import_playbook: ../../playbook.yml
