@@ -5,10 +5,5 @@
   hosts: all
   gather_facts: false
   tasks:
-    - name: include the playbook vars
-      include_vars:
-        dir: ../../host_vars/dylans-arch/
-        extensions:
-          - yml
 
 - import_playbook: ../../playbook.yml

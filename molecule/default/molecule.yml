@@ -7,6 +7,8 @@ driver:
     name: virtualbox
 platforms:
   - name: dylansarch
+    groups:
+      - archws
     config_options:
       ssh.keep_alive: true
       ssh.remote_user: "'vagrant'"

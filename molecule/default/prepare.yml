@@ -4,17 +4,17 @@
   gather_facts: false
   become: true
   tasks:
-    - name: include playbook variables
-      include_vars:
-        dir: ../../host_vars/dylans-arch/
-        extensions:
-          - yml
-
     - name: "check for python"
       raw: test -e /usr/bin/python
       changed_when: false
       ignore_errors: true
       register: pythoninstalled
+
+    - name: "check for pip"
+      raw: test -e /usr/bin/pip
+      changed_when: false
+      ignore_errors: true
+      register: pipinstalled
 
     - name: Synchronise the package databases  # noqa 301
       raw: /usr/bin/pacman -Syy
@@ -24,7 +24,10 @@
       when:
         - pythoninstalled.rc != 0
 
-    - name: install some things which arent in the container but are in the tar image
-      raw: /usr/bin/pacman -S --noconfirm vim base-devel
+    - name: install pip if its not there.
+      raw: /usr/bin/pacman -S --noconfirm python-pip
       when:
-        - pythoninstalled.rc != 0
+        - pipinstalled.rc != 0
+
+    - name: install some things which arent in the container but are in the tar image
+      raw: /usr/bin/pacman -S --noconfirm vim base-devel && pacman -Syu --noconfirm

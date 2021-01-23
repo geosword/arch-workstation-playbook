@@ -4,10 +4,6 @@
   become: true
   gather_facts: true
   tasks:
-    - name: debug
-      debug:
-        msg: "Username is {{ user_name }}"
-
     - name: include the roles
       include_role:
         apply:
